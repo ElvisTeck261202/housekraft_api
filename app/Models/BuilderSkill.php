@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Uuid;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Builder;
@@ -11,12 +11,13 @@ use App\Models\Item;
 
 class BuilderSkill extends Model
 {
-    use Uuid;
+    use HasUuids;
     use SoftDeletes;
 
     protected $table = 'builder_skills';
 
     protected $fillable = [
+        'id',
         'builder_uuid',
         'item_uuid',
         'work_cost',
@@ -29,11 +30,11 @@ class BuilderSkill extends Model
 
     public function builder(): BelongsTo
     {
-        return $this->belongsTo(Builder::class, 'builder_uuid', 'uuid');
+        return $this->belongsTo(Builder::class, 'builder_id', 'id');
     }
 
     public function item(): BelongsTo
     {
-        return $this->belongsTo(Item::class, 'item_uuid', 'uuid');
+        return $this->belongsTo(Item::class, 'item_id', 'id');
     }
 }

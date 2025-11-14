@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Uuid;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Client;
@@ -12,15 +12,16 @@ use App\Models\Property;
 
 class Budget extends Model
 {
-    use Uuid;
+    use HasUuids;
     use SoftDeletes;
 
     protected $table = 'budgets';
 
     protected $fillable = [
-        'client_uuid',
-        'user_uuid',
-        'property_uuid',
+        'id',
+        'client_id',
+        'user_id',
+        'property_id',
         'total_amount',
         'status'
     ];
@@ -31,16 +32,16 @@ class Budget extends Model
 
     public function client(): BelongsTo
     {
-        return $this->belongsTo(Client::class, 'client_uuid', 'uuid');
+        return $this->belongsTo(Client::class, 'client_id', 'id');
     }
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_uuid', 'uuid');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function property(): BelongsTo
     {
-        return $this->belongsTo(Property::class, 'property_uuid', 'uuid');
+        return $this->belongsTo(Property::class, 'property_id', 'id');
     }
 }

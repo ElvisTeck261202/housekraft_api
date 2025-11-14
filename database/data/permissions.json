@@ -1,0 +1,23 @@
+[
+  { "id": 1, "name": "consultar propiedades"},
+  { "id": 2, "name": "crear propiedades"},
+  { "id": 3, "name": "editar propiedades"},
+  { "id": 4, "name": "borrar propiedades"},
+  { "id": 5, "name": "consultar items"},
+  { "id": 6, "name": "crear items"},
+  { "id": 7, "name": "editar items"},
+  { "id": 8, "name": "borrar items"},
+  { "id": 9, "name": "consultar clientes"},
+  { "id": 10, "name": "crear clientes"},
+  { "id": 11, "name": "editar clientes"},
+  { "id": 12, "name": "borrar clientes"},
+  { "id": 13, "name": "consultar obreros"},
+  { "id": 14, "name": "crear obreros"},
+  { "id": 15, "name": "editar obreros"},
+  { "id": 16, "name": "borrar obreros"},
+  { "id": 17, "name": "consultar presupuestos"},
+  { "id": 18, "name": "crear presupestos"},
+  { "id": 19, "name": "editar presupuestos"},
+  { "id": 20, "name": "borrar presupuestos"},
+  { "id": 21, "name": "consultar agentes"}
+]

@@ -12,17 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('builder_skills', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('uuid')->unique()->index();
-            $table->uuid('builder_uuid');
-            $table->uuid('item_uuid');
+            $table->uuid('id')->index()->unique();
+            $table->uuid('builder_id');
+            $table->uuid('item_id');
             $table->decimal('work_cost', 10, 2);
             $table->string('estimated_time');
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('builder_uuid')->references('uuid')->on('builders')->onDelete('cascade');
-            $table->foreign('item_uuid')->references('uuid')->on('items')->onDelete('cascade');
+            $table->foreign('builder_id')->references('id')->on('builders')->onDelete('cascade');
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
         });
     }
 

@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('builders', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('uuid')->index()->unique();
+            $table->uuid('id')->index()->unique();
             $table->string('name');
             $table->text('photo_url');
             $table->softDeletes();

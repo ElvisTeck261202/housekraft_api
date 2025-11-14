@@ -3,21 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Uuid;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Property;
 
 class PropertyImage extends Model
 {
-    use Uuid;
+    use HasUuids;
     use SoftDeletes;
 
     protected $table = 'property_images';
 
     protected $fillable = [
+        'id',
         'image_url',
-        'property_uuid'
+        'property_id'
     ];
 
     protected $hidden = [
@@ -26,6 +27,6 @@ class PropertyImage extends Model
 
     public function property(): BelongsTo
     {
-        return $this->belongsTo(Property::class, 'property_uuid', 'uuid');
+        return $this->belongsTo(Property::class, 'property_id', 'id');
     }
 }

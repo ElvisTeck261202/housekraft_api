@@ -3,19 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Uuid;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Budget;
 
 class Client extends Model
 {
-    use Uuid;
+    use HasUuids;
     use SoftDeletes;
 
     protected $table = 'clients';
 
     protected $fillable = [
+        'id',
         'name',
         'email',
         'phone'
@@ -27,6 +28,6 @@ class Client extends Model
 
     public function budgets(): HasMany
     {
-        return $this->hasMany(Budget::class, 'client_uuid', 'uuid');
+        return $this->hasMany(Budget::class, 'client_id', 'id');
     }
 }

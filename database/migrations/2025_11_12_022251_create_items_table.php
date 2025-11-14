@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('uuid')->unique()->index();
+            $table->uuid('id')->index()->unique();
             $table->string('name');
             $table->text('description');
             $table->decimal('cost', 10, 2);

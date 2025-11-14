@@ -12,19 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('budgets', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('uuid')->index()->unique();
-            $table->uuid('client_uuid');
-            $table->uuid('user_uuid');
-            $table->uuid('property_uuid');
+            $table->uuid('id')->index()->unique();
+            $table->uuid('client_id');
+            $table->uuid('user_id');
+            $table->uuid('property_id');
             $table->decimal('total_amount', 10, 2);
             $table->string('status');
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('client_uuid')->references('uuid')->on('clients')->onDelete('cascade');
-            $table->foreign('user_uuid')->references('uuid')->on('users')->onDelete('cascade');
-            $table->foreign('property_uuid')->references('uuid')->on('properties')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
         });
     }
 

@@ -12,14 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('property_images', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('uuid')->unique()->index();
+            $table->uuid('id')->index()->unique();
             $table->text('image_url');
-            $table->uuid('property_uuid');
+            $table->uuid('property_id');
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('property_uuid')->references('uuid')->on('properties')->onDelete('cascade');
+            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
         });
     }
 
